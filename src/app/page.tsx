@@ -1,6 +1,3 @@
-
 export default function Home() {
-  return (
-   <div> Fitness project </div>
-  );
+  return <div> Fitness project </div>;
 }
