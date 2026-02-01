@@ -26,7 +26,7 @@ const Hero = () => {
           <h1 className="text-3xl md:text-6xl font-extrabold tracking-tight uppercase mb-4 text-foreground">
             TRANSFORM YOUR
             <br />
-            <span className="bg-linear-to-r from-bg-gradient-primary-start to-bg-gradient-primary-end bg-clip-text text-transparent">
+            <span className="text-primary">
               BODY & MIND
             </span>
           </h1>

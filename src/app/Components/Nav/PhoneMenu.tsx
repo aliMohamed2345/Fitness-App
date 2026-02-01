@@ -8,7 +8,7 @@ const PhoneMenu = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 z-30 w-full sm:hidden bg-accent/95 backdrop-blur-md border-t border-border">
+    <nav className="fixed bottom-0 left-0 z-30 w-full sm:hidden bg-card/95 backdrop-blur-xl border-t border-border shadow-(--shadow-elevated)">
       <div className="mx-auto flex h-16 max-w-md items-center justify-around px-2">
         {navMenuData.map((navItem, i) => {
           const isActive =
