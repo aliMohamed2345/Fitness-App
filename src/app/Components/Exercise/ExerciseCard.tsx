@@ -30,7 +30,7 @@ const dummyData = {
   id: "0006",
   name: "alternate heel touchers",
   target: "abs",
-  secondaryMuscles: ["obliques"],
+  secondaryMuscles: ["obliques","core","hip flexors"],
   instructions: [
     "Lie flat on your back with your knees bent and feet flat on the ground.",
     "Extend your arms straight out to the sides, parallel to the ground.",
