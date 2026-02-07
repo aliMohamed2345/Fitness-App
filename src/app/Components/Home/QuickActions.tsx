@@ -10,7 +10,6 @@ const QuickActions = () => {
         description="Jump straight into your most common workout actions"
         url="/exercises"
       />
-      {/* Actions Grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {exerciseActions.map((item, index) => (
           <motion.div
@@ -29,12 +28,10 @@ const QuickActions = () => {
                   hover:-translate-y-1
                 `}
               >
-                {/* Gradient background layer (existing colors) */}
                 <div
                   className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br ${item.color}`}
                 />
 
-                {/* Content */}
                 <div className="relative z-10 p-6 text-center">
                   <div className="mb-3 flex justify-center">
                     <div className="flex items-center justify-center w-14 h-14 rounded-xl bg-muted/40 group-hover:scale-110 transition-transform duration-300">

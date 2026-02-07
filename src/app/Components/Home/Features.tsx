@@ -5,7 +5,6 @@ import { features } from "@/app/utils/data";
 const Features = () => {
   return (
     <section className="container mx-auto px-4 mt-20">
-      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -22,7 +21,6 @@ const Features = () => {
         </h2>
       </motion.div>
 
-      {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {features.map((feature) => (
           <motion.div
@@ -37,18 +35,15 @@ const Features = () => {
             className="h-full cursor-pointer"
           >
             <div className="group relative h-full rounded-xl border border-border bg-card text-card-foreground shadow-card transition-all duration-300 hover:border-primary/30 hover:shadow-lg">
-              {/* glow layer */}
               <div className="pointer-events-none absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-br from-primary/5 via-transparent to-secondary/5" />
 
               <div className="relative p-6 text-center">
-                {/* Icon */}
                 <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-muted/50 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
                   <feature.icon
                     className={`w-6 h-6 transition-transform duration-300 group-hover:rotate-6 ${feature.color}`}
                   />
                 </div>
 
-                {/* Text */}
                 <h3 className="font-bold mb-1 tracking-tight">
                   {feature.title}
                 </h3>

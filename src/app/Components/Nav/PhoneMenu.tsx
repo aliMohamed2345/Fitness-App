@@ -25,7 +25,6 @@ const PhoneMenu = () => {
                 ${isActive && "text-primary"}
               `}
             >
-              {/* Icon */}
               <navItem.icon
                 size={24}
                 className={`
@@ -37,7 +36,6 @@ const PhoneMenu = () => {
                 `}
               />
 
-              {/* Label */}
               <span
                 className={`
                   text-xs font-medium transition-all duration-300

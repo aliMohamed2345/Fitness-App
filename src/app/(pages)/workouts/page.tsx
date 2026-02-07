@@ -1,11 +1,37 @@
 "use client";
+
 import PageHeader from "@/app/Components/Exercise/PageHeader";
 import { useState } from "react";
 import BuilderSection from "@/app/Components/Workout/BuilderSection";
 import SavedWorkoutSection from "@/app/Components/Workout/SavedWorkoutSection";
-type currentTabProps = "builder" | "saved";
+
+export type currentTabProps = "builder" | "saved";
+
+const getStorageItem = (key: string, fallback: unknown) => {
+  if (typeof window === "undefined") return fallback;
+
+  try {
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : fallback;
+  } catch {
+    return fallback;
+  }
+};
+
 const Workout = () => {
-  const [currentTab, setCurrentTab] = useState<currentTabProps>("builder");
+  const builderData = getStorageItem("Builder", []);
+  const savedWorkoutData = getStorageItem("SavedWorkouts", []);
+
+  const numberOfBuilderWorkouts = Array.isArray(builderData)
+    ? builderData.length
+    : 0;
+
+ const numberOfSavedWorkoutData = Array.isArray(savedWorkoutData)
+  ? savedWorkoutData.length
+  : 0;
+
+  const [currentTab, setCurrentTab] =
+    useState<currentTabProps>("builder");
 
   return (
     <div className="pt-20 mx-auto p-2">
@@ -17,25 +43,37 @@ const Workout = () => {
       <div className="flex gap-5">
         <button
           onClick={() => setCurrentTab("builder")}
-          className={`p-2 sm:p-2.5 w-full ${currentTab === "builder" && `bg-linear-to-br from-primary to-secondary hover:border-primary text-white hover:scale-105`} rounded-lg cursor-pointer bg-background transition-all border border-border hover:border-primary text-foreground font-bold min-w-19 sm:min-w-38 hover:bg-accent flex justify-center gap-2 items-center sm:text-lg text-xs `}
+          className={`p-2 cursor-pointer flex justify-center items-center gap-5  w-full ${
+            currentTab === "builder"
+              ? "bg-linear-to-br from-primary to-secondary text-white scale-105"
+              : ""
+          } rounded-lg border border-border font-bold`}
         >
           Builder
-          <span className="bg-primary sm:text-sm text-xs text-white rounded-full p-1 w-4 h-4 sm:w-8 sm:h-8 flex items-center justify-center">
-            2
+          <span className="bg-primary text-white rounded-full p-1 w-6 h-6 flex items-center justify-center">
+            {numberOfBuilderWorkouts}
           </span>
         </button>
+
         <button
           onClick={() => setCurrentTab("saved")}
-          className={`p-2 sm:p-2.5 w-full ${currentTab === "saved" && `bg-linear-to-br from-primary to-secondary hover:border-primary text-white hover:scale-105`} rounded-lg cursor-pointer bg-background transition-all border border-border hover:border-primary text-foreground font-bold min-w-24 sm:min-w-48 hover:bg-accent flex justify-center gap-2 items-center sm:text-lg text-xs`}
+          className={`p-2 flex items-center justify-center gap-5  w-full cursor-pointer ${
+            currentTab === "saved"
+              ? "bg-linear-to-br from-primary to-secondary text-white scale-105"
+              : ""
+          } rounded-lg border border-border font-bold`}
         >
           Saved Workouts
-          <span className="bg-primary sm:text-sm text-xs text-white rounded-full p-1 w-4 h-4 sm:w-8 sm:h-8 flex items-center justify-center">
-            2
+          <span className="bg-primary text-white rounded-full p-1 w-6 h-6 flex items-center justify-center">
+            {numberOfSavedWorkoutData}
           </span>
         </button>
       </div>
+
       {currentTab === "builder" && <BuilderSection />}
-      {currentTab ==="saved"&& <SavedWorkoutSection/>}
+      {currentTab === "saved" && (
+        <SavedWorkoutSection setCurrentTab={setCurrentTab} />
+      )}
     </div>
   );
 };

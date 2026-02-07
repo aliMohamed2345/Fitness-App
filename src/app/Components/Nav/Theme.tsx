@@ -36,7 +36,6 @@ const Theme = () => {
       className="relative w-10 h-10 rounded-full border-border bg-foreground backdrop-blur-md border cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all duration-300 overflow-hidden"
     >
       <div className="relative w-full h-full">
-        {/* Sun Icon */}
         <div
           className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
             isDarkMode
@@ -50,7 +49,6 @@ const Theme = () => {
           />
         </div>
 
-        {/* Moon Icon */}
         <div
           className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
             isDarkMode
